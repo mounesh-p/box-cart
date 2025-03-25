@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAY! It's BOGO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            background: #f9f9f9;
+        }
+
+        .header {
+            font-size: 20px;
+            color: #ff4f8b;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            width: 300px;
+            border: 2px solid #ff4f8b;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            background: #ffffff;
+        }
+
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .details {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .box.expanded .details {
+            display: block;
+        }
+
+        .btn {
+            background-color: #ff4f8b;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 320px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">YAY! It’s BOGO</div>
+
+    <div class="box" onclick="toggleBox(event, this)">
+        <div class="box-header">             
+            <h3>1 Unit <span style="color:red;">10% Off</span></h3>
+            <p>$10.00 USD</p>
+        </div>
+        <div class="details">
+            <div class="options">
+                <div>
+                    <label>Size:</label>
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Color:</label>
+                    <select>
+                        <option>Black</option>
+                        <option>Blue</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box" onclick="toggleBox(event, this)">
+        <div class="box-header">
+            <h3>2 Units <span style="color:red;">20% Off</span></h3>
+            <p>$18.00 USD</p>
+        </div>
+        <div class="details">
+            <div class="options">
+                <div>
+                    <label>#1 Size:</label>
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <label>Color:</label>
+                    <select>
+                        <option>Black</option>
+                        <option>Blue</option>
+                    </select>
+                </div>
+                <div>
+                    <label>#2 Size:</label>
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <label>Color:</label>
+                    <select>
+                        <option>Black</option>
+                        <option>Blue</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box" onclick="toggleBox(event, this)">
+        <div class="box-header">
+            <h3>3 Units <span style="color:red;">30% Off</span></h3>
+            <p>$24.00 USD</p>
+        </div>
+        <div class="details">
+            <div class="options">
+                <div>
+                    <label>#1 Size:</label>
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <label>Color:</label>
+                    <select>
+                        <option>Black</option>
+                        <option>Blue</option>
+                    </select>
+                </div>
+                <div>
+                    <label>#2 Size:</label>
+                    <select>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                    </select>
+                    <label>Color:</label>
+                    <select>
+                        <option>Black</option>
+                        <option>Blue</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="total">
+            <p style="color: #eb135b;">Free Delivery</p>
+
+            <p>Total $18.00 USD</p>
+    </div>
+
+    <button class="btn">Add to Cart</button>
+
+    <script>
+        function toggleBox(event, element) {
+            if (event.target.tagName === 'SELECT') return;
+
+            let allBoxes = document.querySelectorAll('.box');
+            allBoxes.forEach(box => {
+                if (box !== element) {
+                    console.log(box)
+                    box.classList.remove('expanded');
+                    box.style.backgroundColor = '#fff';
+
+                }
+            });
+            element.classList.toggle('expanded');
+            element.style.backgroundColor = element.classList.contains('expanded') ? '#FFB6C1' : '#fff';
+        }
+    </script>
+</body>
+
+</html>
